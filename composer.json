@@ -4,5 +4,10 @@
         "slim/twig-view": "^2.1",
         "php-di/slim-bridge": "^1.0",
         "illuminate/database": "^5.3"
+    },
+    "autoload":{
+        "psr-4": {
+            "Cart\\": "app"
+        }
     }
 }
