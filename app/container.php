@@ -2,6 +2,7 @@
 
 use Slim\Views\Twig;
 use \Interop\Container\ContainerInterface;
+use Slim\Views\TwigExtension;
 
 return [
     'router'    => get(Slim\Router::class),
@@ -9,5 +10,13 @@ return [
         $twig = new Twig(__DIR__ . '/../resources/views', [
             'cache' =>  false   //for development
         ]);
+
+
+        $twig->addExtension(new TwigExtension(
+            $c->get('router'),
+            $c->get('request')->getUri()
+        ));
+
+        return $twig;
     }
 ];
