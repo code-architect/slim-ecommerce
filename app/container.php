@@ -1,8 +1,10 @@
 <?php
 
 use Slim\Views\Twig;
-use \Interop\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 use Slim\Views\TwigExtension;
+use function DI\get;
+
 
 return [
     'router'    => get(Slim\Router::class),
