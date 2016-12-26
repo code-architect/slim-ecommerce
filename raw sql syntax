@@ -1,0 +1,26 @@
+Products Table:-
+
+CREATE TABLE `slim_ecommerce`.`products` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NOT NULL , `slug` VARCHAR(255) NOT NULL , `description` TEXT NULL , `price` FLOAT NOT NULL , `image` VARCHAR(255) NOT NULL , `stock` INT(11) NOT NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Orders Table:-
+
+CREATE TABLE `slim_ecommerce`. ( `id` INT(11) NOT NULL , `hash` INT(255) NOT NULL , `total` INT NOT NULL , `address_id` INT(11) NOT NULL , `paid` TINYINT(1) NOT NULL , `customer_id` INT(11) NOT NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL ) ENGINE = InnoDB;
+
+orders_products:-
+
+CREATE TABLE `slim_ecommerce`.`orders_products` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `order_id` INT(11) NOT NULL , `product_id` INT(11) NOT NULL , `quantity` INT(11) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Customers Table:-
+
+CREATE TABLE `slim_ecommerce`.`customers` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `phone` VARCHAR(255) NOT NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Addresses Table:-
+
+CREATE TABLE `slim_ecommerce`.`addresses` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `address_1` VARCHAR(255) NOT NULL , `address_2` VARCHAR(255) NULL , `city` VARCHAR(255) NULL , `state` VARCHAR(255) NULL , `postal_code` VARCHAR(255) NOT NULL , `country` VARCHAR(255) NOT NULL , `land_mark` TEXT NOT NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Payments Table:-
+
+CREATE TABLE `slim_ecommerce`.`payments` ( `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , `order_id` INT(11) NOT NULL , `failed` TINYINT(1) NULL , `transaction_id` VARCHAR(255) NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `payments` CHANGE `created_at` `created_at` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, CHANGE `updated_at` `updated_at` TIMESTAMP NULL DEFAULT '0000-00-00 00:00:00';
+
