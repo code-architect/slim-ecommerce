@@ -9,7 +9,7 @@
 
  class HomeController
  {
-
+ 
      public function index(Request $request, Response $response, Twig $view, Product $product)
      {
          $products = $product->get();
