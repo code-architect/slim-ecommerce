@@ -19,4 +19,7 @@ interface StorageInterface
     // get rid of an item by index
     public function unsetItem($index);
 
+    // Clear everything
+    public function clear();
+
 }
