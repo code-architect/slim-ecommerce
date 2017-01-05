@@ -26,13 +26,12 @@ class ProductController
         $product = $product->where('slug', $slug)->first();
 
         // if no product found, redirect
-        if(!$product)
-        {
+        if(!$product){
             return $response->withRedirect($this->router->pathFor('home'));
         }
 
         return $this->view->render($response, 'products\product.twig', [
-            'product'   =>  $product,
+            'product' => $product,
         ]);
     }
 
