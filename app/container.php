@@ -6,6 +6,8 @@ use Slim\Views\TwigExtension;
 use function DI\get;
 use Cart\Models\Product;
 use Cart\Support\Storage\Contracts\StorageInterface;
+use Cart\Support\Storage\SessionStorage;
+use Cart\Basket\Basket;
 
 
 return [
@@ -29,5 +31,12 @@ return [
     Product::class  =>  function(ContainerInterface $c)
     {
         return new Product;
-    }
+    },
+    Basket::class => function(ContainerInterface $c)
+    {
+      return new Basket(
+          $c->get(SessionStorage::class),
+          $c->get(Product::class)
+      );
+    },
 ];
